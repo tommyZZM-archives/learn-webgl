@@ -1,0 +1,34 @@
+.pull-center {
+  float: none!important;
+  margin-left: auto;
+  margin-right: auto!important;
+}
+
+body, body>.container, html {
+  min-height: 100%;
+  background: #f0f0f0;
+  font-family: "Microsoft Yahei",Regular,sans-serif;
+}
+
+body{
+  margin: 8px;
+}
+
+//class
+@color-shadow:#dadada;
+
+.shadow{
+  border: solid 1px @color-light-grey;
+  -webkit-box-shadow: 0 1px 6px 0 @color-shadow;
+}
+
+.paper{
+  background: #ffffff;
+  padding: 0;
+
+  .shadow;
+
+  @media (max-width: @screen-sm-min) {
+    border: none;
+  }
+}

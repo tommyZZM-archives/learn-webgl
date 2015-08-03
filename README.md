@@ -1,4 +1,9 @@
-# WebGLPratise 
-hello webgl ~
+## new
 
-http://tommyzzm.github.io/WebGLPratise/
+new project template with gulp.js and webpack as workflow
+
+use [git-template](https://www.npmjs.com/package/git-template) to download it
+
+````
+
+````

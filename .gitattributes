@@ -1,8 +1,6 @@
-# Source Code is TypeScript
-# *.js linguist-language=TypeScript
-
 # Auto detect text files and perform LF normalization
-* text=auto
+* text= auto
+*.js linguist-language=JavaScript
 
 # Custom for Visual Studio
 *.cs     diff=csharp

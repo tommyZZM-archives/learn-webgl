@@ -44,5 +44,5 @@ Temporary Items
 
 # Files that might appear on external disk
 node_modules
-dist
+#dist
 *.*~

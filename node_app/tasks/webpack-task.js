@@ -79,7 +79,7 @@ gulp.task("@webpack-load-src",["@webpack-concat-each-domain"], function() {
             externals: config.externals,
             module: {
                 loaders: [
-                    {test: /\.js~$/, exclude: /node_modules/, loader: loader},
+                    {test: /\.js$/, exclude: /node_modules/, loader: loader},
                     {test: /\.es6~$/, exclude: /node_modules/, loader: loader},
                     {test: /\.less$/, loader: "style!css!less"}
                 ]

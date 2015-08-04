@@ -1,0 +1,35 @@
+.pull-center {
+  float: none!important;
+  margin-left: auto;
+  margin-right: auto!important;
+}
+body,
+body > .container,
+html {
+  min-height: 100%;
+  background: #f0f0f0;
+  font-family: "Microsoft Yahei", Regular, sans-serif;
+}
+body {
+  margin: 8px;
+}
+.shadow {
+  border: solid 1px #dddddd;
+  -webkit-box-shadow: 0 1px 6px 0 #dadada;
+}
+.paper {
+  background: #ffffff;
+  padding: 0;
+  border: solid 1px #dddddd;
+  -webkit-box-shadow: 0 1px 6px 0 #dadada;
+}
+@media (max-width: 768px) {
+  .paper {
+    border: none;
+  }
+}
+.flex {
+  display: -webkit-flex;
+  /* Safari */
+  display: flex;
+}

@@ -4,6 +4,10 @@
 import React from 'react';
 
 class App extends React.Component {
+    constructor(){
+        super();
+    }
+
     render(){
         //this.state.windowResized = true;
         var app =

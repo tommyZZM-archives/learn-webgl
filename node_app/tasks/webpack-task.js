@@ -76,6 +76,8 @@ gulp.task("@webpack-load-src",["@webpack-concat-each-domain"], function() {
                 library: "[name]",
                 filename: '[name].js'
             },
+            devtool: config.dev?'inline-source-map':"",
+            debug: config.dev,
             externals: config.externals,
             module: {
                 loaders: [

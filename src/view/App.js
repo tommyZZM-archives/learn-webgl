@@ -2,6 +2,7 @@
  * Created by tommyZZM on 2015/8/4.
  */
 import React from 'react';
+import { EventDispatcher } from 'alsc';
 
 class App extends React.Component {
     constructor(){
@@ -23,5 +24,11 @@ class App extends React.Component {
         }
     }
 }
+
+class WindowStore extends EventDispatcher{
+
+}
+
+//console.log(WindowStore instanceof EventDispatcher)
 
 export default App;

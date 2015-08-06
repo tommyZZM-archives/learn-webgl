@@ -7,28 +7,44 @@ import { EventDispatcher } from 'alsc';
 class App extends React.Component {
     constructor(){
         super();
+
+        this.state = this.getState();
+
+        window.addEventListener('resize', () => {
+            if(this.isMount){
+                this.onResize();
+            }
+        });
+    }
+
+    getState(){
+        return {
+            style:{
+                minHeight:window.innerHeight-16 //document margin
+            }
+        }
+    }
+
+    onResize(){
+        this.setState(this.getState());
+    }
+
+    componentDidMount() {
+        this.isMount = true;
+    }
+
+    componentWillUnmount() {
+        this.isMount = false
     }
 
     render(){
         //this.state.windowResized = true;
         var app =
             <div className="row">
-                <div className="col-md-10 pull-center paper" style={this.style}></div>
+                <div className="col-md-10 pull-center paper" style={this.state.style}></div>
             </div>;
         return app;
     }
-
-    get style(){
-        return {
-            minHeight:window.innerHeight-16 //document margin
-        }
-    }
 }
-
-class WindowStore extends EventDispatcher{
-
-}
-
-//console.log(WindowStore instanceof EventDispatcher)
 
 export default App;

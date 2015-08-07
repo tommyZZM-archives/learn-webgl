@@ -4,6 +4,10 @@
 import React from 'react';
 import { EventDispatcher } from 'alsc';
 
+import Header from './layout/Header.js';
+import Body from './layout/Body.js';
+import Footer from './layout/Footer.js';
+
 class App extends React.Component {
     constructor(){
         super();
@@ -41,7 +45,11 @@ class App extends React.Component {
         //this.state.windowResized = true;
         var app =
             <div className="row">
-                <div className="col-md-10 pull-center paper" style={this.state.style}></div>
+                <div className="col-md-10 pull-center paper" style={this.state.style}>
+                    <Header />
+                    <Body />
+                    <Footer />
+                </div>
             </div>;
         return app;
     }

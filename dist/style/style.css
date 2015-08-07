@@ -18,6 +18,7 @@ body {
   -webkit-box-shadow: 0 1px 6px 0 #dadada;
 }
 .paper {
+  overflow: hidden;
   background: #ffffff;
   padding: 0;
   border: solid 1px #dddddd;
@@ -27,6 +28,16 @@ body {
   .paper {
     border: none;
   }
+}
+.paper header {
+  overflow: hidden;
+  padding: 10px 26px 0 26px;
+}
+.paper .body {
+  overflow: hidden;
+}
+.paper footer {
+  overflow: hidden;
 }
 .flex {
   display: -webkit-flex;

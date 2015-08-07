@@ -6,6 +6,9 @@
 var app = require('app');  // Module to control application life.
 var BrowserWindow = require('browser-window');  // Module to create native browser window.
 
+var server = require("./node_app/electron/md_static-server.js");
+var cp_gulp = require("./node_app/electron/cp_gulp.js");
+
 // Report crashes to our server.
 require('crash-reporter').start();
 
@@ -26,13 +29,18 @@ app.on('ready', function() {
     // Create the browser window.
     mainWindow = new BrowserWindow({width: 800, height: 600});
 
-    // and load the index.html of the app.
-    mainWindow.loadUrl('file://' + __dirname + '/index.html');
-
     mainWindow.setMenu(null);
 
     // Open the devtools.
-    //mainWindow.openDevTools();
+    mainWindow.openDevTools();
+
+    server.run(function(url){
+        mainWindow.loadUrl(url);
+    });
+
+    cp_gulp.cp_gulptask("watch-all",function() {
+        mainWindow.reload();
+    },false);
 
     // Emitted when the window is closed.
     mainWindow.on('closed', function() {

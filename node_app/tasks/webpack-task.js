@@ -23,7 +23,7 @@ gulp.task("@webpack-clean-tmp",function(){
 
 var config = global.gulpConfig;
 //获取每个domain的源码文件夹
-gulp.task("@webpack-concat-each-domain",function(){
+gulp.task("@rename-src-domainjs",function(){
     var domains = config.domains;
     var i=0;
     var namebetoken = [];
@@ -56,7 +56,7 @@ gulp.task("@webpack-concat-each-domain",function(){
 });
 
 //source build
-gulp.task("@webpack-load-src",["@webpack-concat-each-domain"], function() {
+gulp.task("@webpack-src-domainjs",["@rename-src-domainjs"], function() {
     gulp.src("./dist/js/*.js").pipe(clean());
 
     var domains = config.domains;
@@ -93,16 +93,16 @@ gulp.task("@webpack-load-src",["@webpack-concat-each-domain"], function() {
         .pipe(gulp.dest("./dist/js"));
 });
 
-gulp.task("webpack", ["@webpack-load-src"], function(){
+gulp.task("webpack", ["@webpack-src-domainjs"], function(){
 
 });
 
-gulp.task("webpack-watch", ["@webpack-load-src"], function(){
+gulp.task("webpack-watch", ["@webpack-src-domainjs"], function(){
     var domains = config.domains;
 
     gulp.watch(domains.map(function (domain) {
         return domain.path+"/**/*.js";
-    }),["@webpack-load-src"])
+    }),["@webpack-src-domainjs"])
 });
 
 gulp.task("webpack-clean-tmp",function(){

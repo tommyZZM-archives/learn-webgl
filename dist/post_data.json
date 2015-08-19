@@ -1,9 +1,10 @@
 {
+  "base":"./src-post",
   "posts":[
     {
-      "title":"helloworld",
-      "path":"post/helloworld/entry.js",
-      "md":""
+      "title":"HelloWorld",
+      "path":"./helloworld/",
+      "tags":""
     }
   ]
 }

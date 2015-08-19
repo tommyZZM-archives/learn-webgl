@@ -3,20 +3,29 @@
  */
 
 import { EventDispatcher } from 'alsc';
+import agent from 'superagent';
 
-class ExampleManager extends EventDispatcher{
+class ExampleManager{
 
+    static _instance;
     static get instance(){
-        return new ExampleManager();
+        if(!(ExampleManager._instance instanceof ExampleManager)){
+            return new ExampleManager();
+        }
+        return ExampleManager._instance;
     }
 
     constructor(){
-        super();
+        this.listener = new EventDispatcher();
+        this.loadexample();
     }
 
     //加载例子数据
     loadexample(){
-
+        agent.get("dist/post_data.json")
+            .end(function(err,res){
+                console.log(err,res)
+            })
     }
 }
 

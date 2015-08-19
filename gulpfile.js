@@ -25,7 +25,8 @@ global.gulpConfig = {
     out: './dist',
     externals:{
         react: 'window.React',
-        pixi: 'window.PIXI'
+        pixi: 'window.PIXI',
+        "react-bootstrap":"window.ReactBootstrap"
     },
     gulp:gulp
 };

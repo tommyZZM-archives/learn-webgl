@@ -2,7 +2,6 @@
  * Created by tommyZZM on 2015/8/8.
  */
 import React from 'react';
-import { EventDispatcher } from 'alsc';
 import {Col,Input} from "react-bootstrap"
 
 class SideBar extends React.Component {

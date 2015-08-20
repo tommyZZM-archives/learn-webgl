@@ -2,8 +2,7 @@
  * Created by tommyZZM on 2015/8/10.
  */
 
-import { EventDispatcher } from 'alsc';
-import agent from 'superagent';
+import {Ajax, EventDispatcher} from 'alsc';
 
 class ExampleManager{
 
@@ -22,7 +21,7 @@ class ExampleManager{
 
     //加载例子数据
     loadexample(){
-        agent.get("dist/post_data.json")
+        Ajax.get("dist/post_data.json")
             .end(function(err,res){
                 console.log(err,res)
             })

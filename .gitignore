@@ -43,6 +43,6 @@ Temporary Items
 .apdisk
 
 # Files that might appear on external disk
-node_modules
+#node_modules
 #dist
 *.*~

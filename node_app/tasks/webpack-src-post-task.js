@@ -29,11 +29,8 @@ gulp.task("@webpack-demo-entryjs",function(){
 
         var tasks = post_data.posts.map(function (demo) {
             return gulp.src(path.join(post_data.base, demo.path, "Entry.js"))
-                .pipe(rename("entry.js"))
                 .pipe(webpack({
                     output: {
-                        libraryTarget: "var",
-                        library: "[name]",
                         filename: '[name].js'
                     },
                     devtool: 'inline-source-map',
@@ -50,7 +47,8 @@ gulp.task("@webpack-demo-entryjs",function(){
                     if (err) throw new gutil.PluginError("webpack", err);
                     //gulp.start(["@webpack-clean-tmp"]);
                 }))
-                .pipe(gulp.dest(path.join("./dist/post", demo.path, "/js")));
+                .pipe(rename("Entry.js"))
+                .pipe(gulp.dest(path.join("./dist/post", demo.path, "/")));
         });
 
         return merge(tasks);

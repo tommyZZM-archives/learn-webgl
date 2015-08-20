@@ -9,6 +9,10 @@ class Main{
     constructor(){
         React.render(<App/>, document.getElementById("app"));
     }
+
+    registExample(example){
+
+    }
 }
 
 module.exports = Main;

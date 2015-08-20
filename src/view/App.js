@@ -2,7 +2,6 @@
  * Created by tommyZZM on 2015/8/4.
  */
 import React from 'react';
-import { EventDispatcher } from 'alsc';
 
 import Header from './layout/Header.js';
 import Body from './layout/Body.js';

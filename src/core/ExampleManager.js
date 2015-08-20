@@ -23,7 +23,7 @@ class ExampleManager{
     loadexample(){
         Ajax.get("dist/post_data.json")
             .end(function(err,res){
-                console.log(err,res)
+                console.log(err,res,JSON.parse(res.data));
             })
     }
 }

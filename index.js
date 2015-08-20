@@ -32,14 +32,19 @@ app.on('ready', function() {
     mainWindow.setMenu(null);
 
     // Open the devtools.
-    mainWindow.openDevTools();
+    this.url = null;
+    var self = this;
 
     server.run(function(url){
-        mainWindow.loadUrl(url);
+        self.url = url;
+        mainWindow.loadUrl(url+"index.html");
+        mainWindow.openDevTools();
     });
 
     cp_gulp.cp_gulptask("watch-all",function() {
-        mainWindow.reload();
+        if(self.url){
+            mainWindow.loadUrl(self.url);
+        }
     },false);
 
     // Emitted when the window is closed.

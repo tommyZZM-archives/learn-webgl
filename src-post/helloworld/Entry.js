@@ -2,6 +2,8 @@
  * Created by tommyZZM on 2015/8/15.
  */
 
-//console.log("test");
+class Sample extends app.SampleField{
 
-module.exports = "haha";
+}
+
+module.exports = Sample;

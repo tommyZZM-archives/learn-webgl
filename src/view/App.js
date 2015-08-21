@@ -7,11 +7,15 @@ import Header from './layout/Header.js';
 import Body from './layout/Body.js';
 import Footer from './layout/Footer.js';
 
+import SampleManager from '../core/SampleManager.js';
+
 class App extends React.Component {
     constructor(){
         super();
 
         this.state = this.getState();
+        SampleManager.addListener(SampleManager.CONFIG_LOADED,this.onSampleConfigReady.bind(this));
+        SampleManager.addListener(SampleManager.TOGGLE_TO_SAMPLE,this.onSampleToggle.bind(this));
 
         window.addEventListener('resize', () => {
             if(this.isMount){
@@ -32,14 +36,16 @@ class App extends React.Component {
         this.setState(this.getState());
     }
 
-    componentDidMount() {
-        this.isMount = true;
+    onSampleConfigReady(){
+        console.log(SampleManager.samplesData)
     }
 
-    componentWillUnmount() {
-        this.isMount = false
+    onSampleToggle(e){
+        console.log(e)
     }
 
+    componentDidMount() {this.isMount = true;}
+    componentWillUnmount() {this.isMount = false}
     render(){
         //this.state.windowResized = true;
         var app =

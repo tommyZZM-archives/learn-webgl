@@ -19,7 +19,7 @@ var rename = require("gulp-rename");
 
 var config = global.gulpConfig;
 
-gulp.task("@webpack-demo-entryjs",function(){
+gulp.task("@webpack-sample-entryjs",function(){
     if(Array.isArray(post_data.posts)){
 
         var loader = "babel-loader";
@@ -27,8 +27,8 @@ gulp.task("@webpack-demo-entryjs",function(){
             loader+="?experimental&optional=selfContained";
         }
 
-        var tasks = post_data.posts.map(function (demo) {
-            return gulp.src(path.join(post_data.base, demo.path, "Entry.js"))
+        var tasks = post_data.posts.map(function (sample) {
+            return gulp.src(path.join(post_data.base, sample.path, "Entry.js"))
                 .pipe(webpack({
                     output: {
                         filename: '[name].js'
@@ -48,13 +48,13 @@ gulp.task("@webpack-demo-entryjs",function(){
                     //gulp.start(["@webpack-clean-tmp"]);
                 }))
                 .pipe(rename("Entry.js"))
-                .pipe(gulp.dest(path.join("./dist/post", demo.path, "/")));
+                .pipe(gulp.dest(path.join("./dist/post", sample.path, "/")));
         });
 
         return merge(tasks);
     }
 });
 
-gulp.task("webpack-demo", ["@webpack-demo-entryjs"], function(){
+gulp.task("webpack-samples", ["@webpack-sample-entryjs"], function(){
 
 });

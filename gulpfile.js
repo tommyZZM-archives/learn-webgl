@@ -8,7 +8,7 @@ var gutil = require("gulp-util");
 global.gulpConfig = {
     dev:true,
     domains: [//scriptfile
-        {"name":"main","path":'./src',entry:"Main.js"}//export:true
+        {"name":"app","path":'./src',entry:"Main.js"}//export:true
     ],
     less:{
         entry:[

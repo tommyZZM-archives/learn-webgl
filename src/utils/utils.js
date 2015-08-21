@@ -2,7 +2,7 @@
  * Created by tommyZZM on 2015/8/20.
  */
 export var url = {
-    joint:function(...args) {
+    join:function(...args) {
         var joined = [].slice.call(arguments, 0).join('/');
         return (function normalize (str) {
             return str
@@ -13,4 +13,4 @@ export var url = {
                 .replace(/\/\.\//g, '\/');
         })(joined);
     }
-}
+};

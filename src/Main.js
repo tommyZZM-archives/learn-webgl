@@ -10,7 +10,7 @@ import SampleField from './core/SampleField.js';
 
 class Main{
     constructor(){
-        React.render(<App/>, document.getElementById("app"));
+        React.render(<App/>, document.getElementById("app"));//
     }
 }
 

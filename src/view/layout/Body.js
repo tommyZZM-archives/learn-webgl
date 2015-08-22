@@ -10,8 +10,14 @@ import SideBar from "../inc/SideBar.js";
 class Body extends React.Component {
     render(){
         return  <div className="body">
-                    <Content />
-                    <SideBar />
+                    <Content sampleContent={this.props.sampleCurr}/>
+                    <SideBar samplesList={(()=>{
+                        if(this.props.samplesData && Array.isArray(this.props.samplesData.posts)){
+                            return this.props.samplesData.posts;
+                        }else{
+                            return [];
+                        }
+                    })()}/>
                 </div>
     }
 }

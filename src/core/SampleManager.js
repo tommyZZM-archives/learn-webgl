@@ -33,8 +33,11 @@ class SampleManager extends EventDispatcher{
             this.samplesData = JSON.parse(res.text);
 
             this.samplesDict["HEAD"] = this.samplesData.posts[0];
+            var id = 0;
             this.samplesData.posts.forEach((post)=>{
                 this.samplesDict[post.Title+post.date] = post;
+                post.id = id;
+                id++;
             });
 
             this.finsishLoadConfig();
@@ -62,11 +65,12 @@ class SampleManager extends EventDispatcher{
                         console.warn("load sample script error", sample.path)
                     }
 
-                    sample["marddown"]=res_markdown;
+                    sample["markdown"]=res_markdown;
 
                     this.emit(this.TOGGLE_TO_SAMPLE,{sample:sample});
                 });
-
+            }else{
+                this.emit(this.TOGGLE_TO_SAMPLE,{sample:sample});
             }
         }
     }

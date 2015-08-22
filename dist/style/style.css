@@ -35,6 +35,10 @@ body {
 }
 .paper .body {
   overflow: hidden;
+  padding: 0 26px 0 26px;
+}
+.paper .body .content {
+  padding: 0;
 }
 .paper footer {
   overflow: hidden;

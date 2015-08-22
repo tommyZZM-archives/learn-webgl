@@ -83,7 +83,9 @@ gulp.task("@webpack-src-domainjs",["@rename-src-domainjs"], function() {
                 loaders: [
                     {test: /\.js$/, exclude: /node_modules/, loader: loader},
                     {test: /\.es6~$/, exclude: /node_modules/, loader: loader},
-                    {test: /\.less$/, loader: "style!css!less"}
+                    {test: /\.less$/, loader: "style!css!less"},
+                    {test: /\.json$/, loader: "json-loader"}
+
                 ]
             }
         }, null, function (err, stats) {

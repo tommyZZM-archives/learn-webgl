@@ -14,8 +14,19 @@ class SideBar extends React.Component {
                 label='Search'
                 hasFeedback
                 />
+            <div>
+                <ul>
+                    {this.renderSampleItem()}
+                </ul>
+            </div>
         </Col>
         )
+    }
+
+    renderSampleItem(){
+        return this.props.samplesList.map((sample)=>{
+            return <li key={sample.id}>{sample.title}</li>
+        });
     }
 }
 

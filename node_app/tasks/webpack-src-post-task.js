@@ -56,5 +56,7 @@ gulp.task("@webpack-sample-entryjs",function(){
 });
 
 gulp.task("webpack-samples", ["@webpack-sample-entryjs"], function(){
-
+    gulp.watch(post_data.posts.map(function (sample) {
+        return path.join(post_data.base, sample.path, "./**/*.js")
+    }),["webpack-samples"])
 });

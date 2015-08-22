@@ -13,7 +13,7 @@ class App extends React.Component {
     constructor(){
         super();
 
-        this.state = this.getState();
+        this.state = this.initializeState;
         SampleManager.addListener(SampleManager.CONFIG_LOADED,this.onSampleConfigReady.bind(this));
         SampleManager.addListener(SampleManager.TOGGLE_TO_SAMPLE,this.onSampleToggle.bind(this));
 
@@ -24,24 +24,36 @@ class App extends React.Component {
         });
     }
 
-    getState(){
+    get initializeState(){
         return {
             style:{
                 minHeight:window.innerHeight-16 //document margin
-            }
+            },
+            samplesData:null,
+            sampleCurr:null //当前例子
         }
     }
 
     onResize(){
-        this.setState(this.getState());
+        if(this.state.style.minHeight!==window.innerHeight-16){
+            this.setState({
+                style:{
+                    minHeight:window.innerHeight-16 //document margin
+                }
+            });
+        }
     }
 
     onSampleConfigReady(){
-        console.log(SampleManager.samplesData)
+        this.setState({
+            samplesData:SampleManager.samplesData
+        });
     }
 
     onSampleToggle(e){
-        console.log(e)
+        this.setState({
+            sampleCurr:e.sample
+        });
     }
 
     componentDidMount() {this.isMount = true;}
@@ -52,7 +64,7 @@ class App extends React.Component {
             <div className="row">
                 <div className="col-md-10 pull-center paper" style={this.state.style}>
                     <Header />
-                    <Body />
+                    <Body sampleCurr={this.state.sampleCurr} samplesData={this.state.samplesData}/>
                     <Footer />
                 </div>
             </div>;

@@ -21,7 +21,7 @@ global.gulpConfig = {
     watchfiles:[
         "./index.html",
         "./style/**/*.less",
-        "./src-post/**/*.js"
+        "./src-post/**/*"
     ],
     out: './dist',
     externals:{

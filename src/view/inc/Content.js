@@ -6,6 +6,7 @@ import {Col} from "react-bootstrap"
 
 import * as Commonmark from 'commonmark';
 import SampleRenderer from '../content/SampleRenderer.js'
+import SampleManager from '../../core/SampleManager.js';
 
 class Content extends React.Component {
 
@@ -20,7 +21,11 @@ class Content extends React.Component {
     render(){
         return (
             <Col className="content " md={8}>
-                <Markdown source={this.props.sampleContent?this.props.sampleContent.markdown:null}/>
+                {(()=>{
+                    if(this.props.sampleContent&&this.props.sampleContent.id){
+                        return <Markdown id={this.props.sampleContent.id} source={this.props.sampleContent.markdown}/>
+                    }
+                })()}
             </Col>
         )
     }
@@ -31,6 +36,28 @@ class Markdown extends React.Component{
         super();
         this.markPraser = new Commonmark.Parser();
         this.markRenderer = new SampleRenderer({sourcepos: true});
+
+        this.canvasQuery = [];
+        this.canvasDict = {};
+
+        this.markRenderer.renderHtml("canvas",(tag,attrs)=>{
+            return <Canvas parent={this} attrs={attrs}/>;
+        })
+    }
+
+    componentDidMount() {
+        var dict = {};
+        for(var i in this.canvasDict){
+            dict[i] = React.findDOMNode(this.canvasDict[i])
+        }
+
+        var data = {
+            canvas:{
+                query:this.canvasQuery.map((canvas)=>{return React.findDOMNode(canvas)}),
+                dirct:dict
+            }
+        };
+        SampleManager.readySample(this.props.id,data);
     }
 
     render(){
@@ -42,6 +69,19 @@ class Markdown extends React.Component{
         }else{
             return <div className="noop"></div>
         }
+    }
+}
+
+class Canvas extends React.Component{
+    componentDidMount() {
+        var parent = this.props.parent;
+        var canvas = React.findDOMNode(this);
+        parent.canvasQuery.push(canvas);
+        if(this.props.attrs.name)parent.canvasDict[this.props.attrs.name]=canvas;
+    }
+
+    render(){
+        return React.createElement("canvas",this.props.attrs)
     }
 }
 

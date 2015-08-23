@@ -8,8 +8,16 @@ import * as Commonmark from 'commonmark';
 
 var rex = {
     htmlSingleTag:(/^<(\w+)\s*(.*)\/?>(?:<\/\1>|)$/),
-    html:/<|&#?\w+;/
+    html:/<|&#?\w+;/,
+    htmlProps:/(\w+)=([^>]+)/i
 };
+
+var domIdentity;
+if(typeof document!=="undefined"){
+    domIdentity = document.createElement("div");
+}else{
+    console.error("document undefined!");
+}
 
 class SampleRenderer implements ICommonmarkRenderer{
     constructor(options){
@@ -23,7 +31,8 @@ class SampleRenderer implements ICommonmarkRenderer{
     }
 
     renderHtml(tagName,fn){
-
+        if(typeof fn!=="function")return;
+        this.howRenderHtml[tagName]=fn
     }
 
     render(block){
@@ -94,8 +103,20 @@ class SampleRenderer implements ICommonmarkRenderer{
 
                             var htmltag = htmlprase[1];
                             var htmlele;
+
+                            domIdentity.innerHTML = node.literal;
+                            var htmlattributes = domIdentity.childNodes[0].attributes;
+                            for(var i=0;i<htmlattributes.length;i++){
+                                var a = htmlattributes[i];
+                                var name = a.name;
+                                if(name){
+                                    if(name.toLowerCase()==="classname"){name="className"}
+                                    attrs[name] = a.nodeValue.length>0?a.nodeValue:true;
+                                }
+                            }
+
                             if(typeof this.howRenderHtml[htmltag]==="function"){
-                                htmlele = this.howRenderHtml[htmltag](node.literal);
+                                htmlele = this.howRenderHtml[htmltag](htmltag,attrs);
                             }else{
                                 htmlele = self.createElement(
                                     htmltag,

@@ -2,16 +2,26 @@
  * Created by tommyZZM on 2015/8/21.
  */
 
-class SampleField{
-    constructor(){
+import {EventDispatcher} from 'alsc';
 
+class SampleField extends EventDispatcher{
+    constructor(){
+        super();
+        this.base = "";
     }
 
-    launch(){
+    launch(canvas){
         //TODO:需要传入canvas
     }
 
-    destruct(){
+    get destruct(){
+        return ()=>{
+            this.onDestruct();
+            this.emit("destruct")
+        }
+    }
+
+    onDestruct(){
 
     }
 }

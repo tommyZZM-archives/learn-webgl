@@ -40,6 +40,18 @@ body {
 .paper .body .content {
   padding: 0;
 }
+.paper .body .content .markdown canvas {
+  max-width: 100%;
+  background: #F0F0F0;
+}
+.paper .body .content .markdown image {
+  max-width: 100%;
+}
+@media (max-width: 992px) {
+  .paper .body .sidebar {
+    padding: 0;
+  }
+}
 .paper footer {
   overflow: hidden;
 }

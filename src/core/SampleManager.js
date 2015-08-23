@@ -10,11 +10,12 @@ import {url,fn} from "../utils/utils.js";
 import SampleField from "./../view/content/SampleField.js";
 
 class SampleManager extends EventDispatcher{
-    /**
-     * @return {string}
-     */
+    /**@return {string}*/
     get CONFIG_LOADED(){return "CONFIG_LOADED";};
+    /**@return {string}*/
     get TOGGLE_TO_SAMPLE(){return "TOGGLE_TO_SAMPLE";};
+    /**@return {string}*/
+    //get READY_SAMPLE(){return "READY_SAMPLE";};
 
     static _instance;
     static get instance(){
@@ -33,15 +34,19 @@ class SampleManager extends EventDispatcher{
             this.samplesData = JSON.parse(res.text);
 
             this.samplesDict["HEAD"] = this.samplesData.posts[0];
-            var id = 0;
+            this.samplesIdDict = {};
+            var id = 1;
             this.samplesData.posts.forEach((post)=>{
-                this.samplesDict[post.Title+post.date] = post;
                 post.id = id;
                 id++;
+                this.samplesDict[post.title+post.date] = post;
+                this.samplesIdDict[post.id] = post;
             });
 
             this.finsishLoadConfig();
         });
+
+        //this.addListener(this.READY_SAMPLE,this.readySample.bind(this))
     }
 
     finsishLoadConfig(){
@@ -50,6 +55,10 @@ class SampleManager extends EventDispatcher{
     }
 
     toggleToSample(id){
+        if(this.currExample){
+            this.currExample.destruct();
+        }
+
         var sample = this.samplesDict[id];
         if(sample){
             if(!sample["marddown"] && !sample["script"]){
@@ -72,6 +81,17 @@ class SampleManager extends EventDispatcher{
             }else{
                 this.emit(this.TOGGLE_TO_SAMPLE,{sample:sample});
             }
+        }
+    }
+
+    readySample(id,data){
+        var sample = this.samplesIdDict[id];
+        if(sample){
+            if(!sample.runingScript){
+                sample.runingScript = new sample.script();
+            }
+            sample.runingScript.launch(data.canvas);
+            this.currExample = sample.runingScript;
         }
     }
 }

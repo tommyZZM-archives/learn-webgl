@@ -6,6 +6,17 @@ declare module app{
         launch(canvas);
         destruct();
         onDestruct();
+        srcPath(url):string;
+        distPath(url):string;
+        shadersDict:any;
+        loadShaders(gl:WebGLRenderingContext,cb:Function,loadobj:{url:string;type:string;name:string}[]);
+        CONSTANTS:any;
+    }
+
+    export class AnimationManager{
+        static run();
+        static stop(force:boolean = true);
+        static onLoop(fn:Function);
     }
 }
 

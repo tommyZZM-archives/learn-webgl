@@ -19,3 +19,10 @@ export var rex = {
     htmlSingleTag:(/^<(\w+)\s*\/?>(?:<\/\1>|)$/),
     html:/<|&#?\w+;/
 };
+
+export var constants = {
+    PI:Math.PI,
+    PI_2: Math.PI * 2,
+    RAD_TO_DEG:180 / Math.PI,
+    DEG_TO_RAD:Math.PI / 180
+};

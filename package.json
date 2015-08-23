@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "alsc": "git://github.com/tommyzzm/alsc.git",
+    "async": "^1.4.2",
     "babel-loader": "^5.3.2",
     "babel-runtime": "^5.8.3",
     "component-emitter": "^1.2.0",

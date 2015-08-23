@@ -39,8 +39,10 @@ body {
 }
 .paper .body .content {
   padding: 0;
+  padding-right: 15px;
 }
 .paper .body .content .markdown canvas {
+  min-width: 100%;
   max-width: 100%;
   background: #F0F0F0;
 }

@@ -4,7 +4,7 @@
 
 import {EventDispatcher} from 'alsc';
 import * as agent from "superagent";
-import * as howdo from "howdo";
+import * as async from "async";
 
 import {url,fn} from "../utils/utils.js";
 import SampleField from "./../view/content/SampleField.js";
@@ -62,11 +62,17 @@ class SampleManager extends EventDispatcher{
         var sample = this.samplesDict[id];
         if(sample){
             if(!sample["marddown"] && !sample["script"]){
-                howdo.task((next)=>{
-                    agent.get(url.join("dist/post",sample.path,"/Entry.js")).end((err,res)=>{next(err,res.text);});
-                }).task((next)=>{
-                    agent.get(url.join("src-post/",sample.path,"Note.md")).end((err,res)=>{next(err,res.text);});
-                }).together((err, res_script, res_markdown)=> {
+                async.series([
+                    (next)=>{
+                        agent.get(url.join("dist/post",sample.path,"/Entry.js")).end((err,res)=>{next(err,res.text);});
+                    },
+                    (next)=>{
+                        agent.get(url.join("src-post/",sample.path,"Note.md")).end((err,res)=>{next(err,res.text);});
+                    }
+                ],(err, results)=>{
+                    var res_script = results[0];
+                    var res_markdown = results[1];
+
                     eval.apply(this, ["var script =" + res_script]);
                     if (typeof script !== "undefined" && script.prototype && script.prototype instanceof SampleField) {
                         sample["script"] = script;
@@ -88,7 +94,7 @@ class SampleManager extends EventDispatcher{
         var sample = this.samplesIdDict[id];
         if(sample){
             if(!sample.runingScript){
-                sample.runingScript = new sample.script();
+                sample.runingScript = new sample.script(url.join("src-post/",sample.path),url.join("dist/post",sample.path));
             }
             sample.runingScript.launch(data.canvas);
             this.currExample = sample.runingScript;

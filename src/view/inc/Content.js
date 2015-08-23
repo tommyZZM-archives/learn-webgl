@@ -5,6 +5,7 @@ import React from 'react';
 import {Col} from "react-bootstrap"
 
 import * as Commonmark from 'commonmark';
+import SampleRenderer from '../content/SampleRenderer.js'
 
 class Content extends React.Component {
 
@@ -29,16 +30,15 @@ class Markdown extends React.Component{
     constructor() {
         super();
         this.markPraser = new Commonmark.Parser();
+        this.markRenderer = new SampleRenderer({sourcepos: true});
     }
 
     render(){
         if(typeof this.props.source === "string"){
-            var renderer = new Commonmark.HtmlRenderer({sourcepos: true});
             var ast = this.markPraser.parse(this.props.source || '');
-            var elements = renderer.render(ast);
+            var elements = this.markRenderer.render(ast);
 
-            //console.log(this.props.source,elements);
-            return <div className="markdown" dangerouslySetInnerHTML={{__html:elements}}></div>
+            return React.createElement.apply(React,["div",{className:"markdown"}].concat(elements));
         }else{
             return <div className="noop"></div>
         }

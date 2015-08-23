@@ -4,6 +4,8 @@
 var gulp = require("gulp");
 var gutil = require("gulp-util");
 
+var server = require("./node_app/electron/md_static-server.js");
+
 // Specify game project paths for tasks.
 global.gulpConfig = {
     dev:true,
@@ -39,6 +41,13 @@ requireDir('./node_app/tasks');
 
 gulp.task('default', function(){
     //gulp.start("webpack");
+});
+
+gulp.task('server', function(){
+    //gulp.start("webpack");
+    server.run(function(url){
+
+    })
 });
 
 //Electron 使用的子进程运行的 task

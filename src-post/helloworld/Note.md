@@ -1,5 +1,5 @@
 ## Hello World
 
-<canvas></canvas>
+<canvas name="hello">
 
-haha
+hello

@@ -7,7 +7,7 @@ import * as agent from "superagent";
 import * as howdo from "howdo";
 
 import {url,fn} from "../utils/utils.js";
-import SampleField from "./SampleField.js";
+import SampleField from "./../view/content/SampleField.js";
 
 class SampleManager extends EventDispatcher{
     /**

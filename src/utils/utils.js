@@ -14,3 +14,8 @@ export var url = {
         })(joined);
     }
 };
+
+export var rex = {
+    htmlSingleTag:(/^<(\w+)\s*\/?>(?:<\/\1>|)$/),
+    html:/<|&#?\w+;/
+};

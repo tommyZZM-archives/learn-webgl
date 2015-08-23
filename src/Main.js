@@ -6,7 +6,7 @@ import React from 'react';
 import App from './view/App.js';
 
 import SampleManager from './core/SampleManager.js';
-import SampleField from './core/SampleField.js';
+import SampleField from './view/content/SampleField.js';
 
 class Main{
     constructor(){

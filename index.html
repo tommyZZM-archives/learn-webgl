@@ -12,12 +12,15 @@
 
     <script src="dist/lib/es6-shim.min.js" type="text/javascript"></script>
     <script src="dist/lib/react-bootstrap.min.js" type="text/javascript"></script>
+    <script src="dist/lib/highlight.pack.js" type="text/javascript"></script>
 </head>
 <body>
     <div id="app" class="container"></div>
     <script src="dist/js/app.js" type="text/javascript"></script>
     <script type="text/javascript">
-        app.launch();
+        if (typeof app !== "undefined" && typeof app.launch === "function") {
+            app.launch();
+        }
     </script>
 </body>
 </html>

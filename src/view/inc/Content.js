@@ -4,7 +4,6 @@
 import React from 'react';
 import {Col} from "react-bootstrap"
 
-import * as Commonmark from 'commonmark';
 import SampleRenderer from '../content/SampleRenderer.js'
 import SampleManager from '../../core/SampleManager.js';
 
@@ -34,8 +33,8 @@ class Content extends React.Component {
 class Markdown extends React.Component{
     constructor() {
         super();
-        this.markPraser = new Commonmark.Parser();
         this.markRenderer = new SampleRenderer({sourcepos: true});
+        this.isRenderSuccess = false;
 
         this.canvasQuery = [];
         this.canvasDict = {};
@@ -57,18 +56,23 @@ class Markdown extends React.Component{
                 dirct:dict
             }
         };
-        SampleManager.readySample(this.props.id,data);
+        if(this.isRenderSuccess){
+            SampleManager.readySample(this.props.id,data);
+        }
     }
 
     render(){
         if(typeof this.props.source === "string"){
-            var ast = this.markPraser.parse(this.props.source || '');
-            var elements = this.markRenderer.render(ast);
+            var elements = this.markRenderer.render(this.props.source || '');
 
-            return React.createElement.apply(React,["div",{className:"markdown"}].concat(elements));
-        }else{
-            return <div className="noop"></div>
+            if(elements&&!elements.some((ele)=>{
+                    return !React.isValidElement(ele)
+                })){
+                this.isRenderSuccess = true;
+                return React.createElement.apply(React,["div",{className:"markdown"}].concat(elements));
+            }
         }
+        return <div className="noop"></div>
     }
 }
 

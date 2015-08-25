@@ -155,6 +155,7 @@ class Renderer implements ICommonmarkRenderer{
                     attrs.href = node.destination;
                     if (node.title) {
                         attrs.title = node.title;
+                        attrs.target = "_blank";
                     }
                     self.tag(node, 'a', attrs);
                     break;
@@ -186,7 +187,7 @@ class Renderer implements ICommonmarkRenderer{
                     codeWrapper.appendChild(code);
 
                     if(typeof hljs!=="undefined"){
-                        console.log(hljs.highlightAuto(node.literal,[infoWords[0]]))
+                        //console.log(hljs.highlightAuto(node.literal,[infoWords[0]]))
                         code.innerHTML = hljs.highlightAuto(node.literal,[infoWords[0]]).value
                     }
 

@@ -153,9 +153,9 @@ class Renderer implements ICommonmarkRenderer{
                     break;
                 case 'Link':
                     attrs.href = node.destination;
+                    attrs.target = "_blank";
                     if (node.title) {
                         attrs.title = node.title;
-                        attrs.target = "_blank";
                     }
                     self.tag(node, 'a', attrs);
                     break;

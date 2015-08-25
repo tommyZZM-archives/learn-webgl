@@ -62,11 +62,11 @@ class App extends React.Component {
         //this.state.windowResized = true;
         var app =
             <div className="row">
-                <div className="col-md-10 pull-center paper" style={this.state.style}>
+                <main className="col-md-10 page pull-center paper" style={this.state.style}>
                     <Header />
                     <Body sampleCurr={this.state.sampleCurr} samplesData={this.state.samplesData}/>
                     <Footer />
-                </div>
+                </main>
             </div>;
         return app;
     }

@@ -98,8 +98,7 @@ gl_FragColor    //用来保存片元着色器计算完成的片元颜色值，�
 
 
 ## C/S图形绘制架构
-
-
+...
 
 
 ## 基本图形
@@ -127,5 +126,5 @@ gl.TRIANGLE_FAN   //鳍状三角形组合(扇)
 
 **参考:**
 - [Renderbuffer Object](https://www.opengl.org/wiki/Renderbuffer_Object)
-- [](http://blog.csdn.net/mzyang272/article/details/7655464)
+- [OpenGL中的缓冲区对象](http://blog.csdn.net/mzyang272/article/details/7655464)
 - [OpenGL中的缓冲区](http://blog.csdn.net/Haohan_Meng/article/details/25246519)

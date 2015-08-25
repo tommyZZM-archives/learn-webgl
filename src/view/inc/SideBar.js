@@ -7,7 +7,7 @@ import {Col,Input} from "react-bootstrap"
 class SideBar extends React.Component {
     render(){
         return(
-        <Col className="sidebar" md={4}>
+        <Col className="sidebar" md={3}>
             <Input
                 type='text'
                 placeholder='Enter key words...'

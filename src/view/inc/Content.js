@@ -19,7 +19,7 @@ class Content extends React.Component {
 
     render(){
         return (
-            <Col className="content " md={8}>
+            <Col className="content " md={9}>
                 {(()=>{
                     if(this.props.sampleContent&&this.props.sampleContent.id){
                         return <Markdown id={this.props.sampleContent.id} source={this.props.sampleContent.markdown}/>

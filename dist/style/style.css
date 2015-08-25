@@ -13,6 +13,16 @@ html {
 body {
   margin: 8px;
 }
+a {
+  color: #08afcb;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  color: #ff6400;
+  text-decoration: none;
+  -webkit-transition-duration: 0.3s;
+}
 .shadow {
   border: solid 1px #dddddd;
   -webkit-box-shadow: 0 1px 6px 0 #dadada;
@@ -29,33 +39,141 @@ body {
     border: none;
   }
 }
-.paper header {
-  overflow: hidden;
-  padding: 10px 26px 0 26px;
+main.page .bodymain {
+  padding-left: 29px;
+  padding-right: 20px;
 }
-.paper .body {
+main.page header#site-header {
+  padding-left: 29px;
+  padding-right: 20px;
+  padding-top: 39px;
+}
+main.page header#site-header h1.page-title {
+  margin-top: 0;
+  margin-bottom: 2px;
+  font-weight: bold;
+  color: #262a30;
+  display: inline-block;
+}
+main.page header#site-header nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+main.page header#site-header nav ul li {
+  display: inline-block;
+}
+main.page header#site-header nav.social-nav {
+  display: inline-block;
+  position: absolute;
+  top: 6px;
+  right: 29px;
+  padding-top: 100px;
+}
+main.page header#site-header nav.social-nav li {
+  font-size: 23px;
+  line-height: 1;
+  margin-left: 20px;
+}
+main.page header#site-header nav.social-nav li:first-child {
+  margin-left: 0;
+}
+main.page header#site-header nav.social-nav li a {
+  color: #262a30;
+}
+main.page header#site-header nav.social-nav li a:hover {
+  color: #ff6400;
+}
+@media (max-width: 480px) {
+  main.page header#site-header nav.social-nav {
+    display: none;
+  }
+}
+main.page header#site-header nav.site-nav {
+  font-size: 15px;
+}
+main.page header#site-header nav.site-nav ul {
+  list-style: none;
+  padding: 0;
+  padding-top: 10px;
+  margin: 0;
+  margin-top: 10px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #dddddd;
+}
+main.page header#site-header nav.site-nav ul li {
+  display: inline-block;
+  font-size: 16px;
+  margin: 0 6px;
+  background-color: inherit;
+  color: #5c5c5c;
+  outline: none;
+}
+main.page header#site-header nav.site-nav ul li:first-of-type {
+  margin-left: 0;
+}
+main.page header#site-header nav.site-nav ul li a {
+  display: inline-block;
+  padding: 6px 15px;
+  color: #555555;
+  border-bottom: 3px solid #ffffff;
+  -webkit-transition: 300ms;
+}
+main.page header#site-header nav.site-nav ul li a:focus,
+main.page header#site-header nav.site-nav ul li a:hover {
+  border-bottom: 3px solid #08afcb;
+}
+main.page header#site-header nav.site-nav ul li.curr a {
+  border-bottom: 3px solid #ff6400;
+  font-weight: bold;
+  color: #555555;
+}
+main.page #site-main {
   overflow: hidden;
   padding: 0 26px 0 26px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  margin-top: 20px;
 }
-.paper .body .content {
+main.page #site-main .content {
+  overflow: hidden;
+  background: #ffffff;
   padding: 0;
-  padding-right: 15px;
+  border: solid 1px #dddddd;
+  -webkit-box-shadow: 0 1px 6px 0 #dadada;
+  padding: 20px;
 }
-.paper .body .content .markdown canvas {
+@media (max-width: 768px) {
+  main.page #site-main .content {
+    border: none;
+  }
+}
+main.page #site-main .content .markdown canvas {
   min-width: 100%;
   max-width: 100%;
   background: #F0F0F0;
 }
-.paper .body .content .markdown image {
+main.page #site-main .content .markdown image {
   max-width: 100%;
 }
+main.page #site-main .sidebar {
+  padding-right: 0;
+}
 @media (max-width: 992px) {
-  .paper .body .sidebar {
+  main.page #site-main .sidebar {
     padding: 0;
   }
 }
-.paper footer {
+main.page footer {
   overflow: hidden;
+  background: #262a30;
+  padding: 20px;
+  border-top: 1px solid #888888;
+  color: #dddddd;
+}
+main.page footer p {
+  margin: 0;
+  padding: 0 0 5px;
 }
 @font-face {
   font-family: octicons-anchor;
@@ -71,13 +189,6 @@ body {
   font-size: 16px;
   line-height: 1.6;
   word-wrap: break-word;
-}
-.markdown a {
-  background-color: transparent;
-}
-.markdown a:active,
-.markdown a:hover {
-  outline: 0;
 }
 .markdown strong {
   font-weight: bold;
@@ -130,14 +241,6 @@ body {
 }
 .markdown input {
   font: 13px/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-}
-.markdown a {
-  color: #4078c0;
-  text-decoration: none;
-}
-.markdown a:hover,
-.markdown a:active {
-  text-decoration: underline;
 }
 .markdown hr {
   height: 0;
@@ -235,10 +338,6 @@ body {
 }
 .markdown > *:last-child {
   margin-bottom: 0 !important;
-}
-.markdown a:not([href]) {
-  color: inherit;
-  text-decoration: none;
 }
 .markdown .anchor {
   position: absolute;
@@ -465,7 +564,7 @@ body {
   word-wrap: normal;
 }
 .markdown pre code {
-  white-space: pre-line;
+  white-space: pre-wrap;
   display: inline;
   max-width: initial;
   padding: 0;
@@ -616,7 +715,6 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .hljs-comment,
 .diff .hljs-header {
   color: #998;
-  font-style: italic;
 }
 .hljs-keyword,
 .css .rule .hljs-keyword,

@@ -26,3 +26,7 @@ export var constants = {
     RAD_TO_DEG:180 / Math.PI,
     DEG_TO_RAD:Math.PI / 180
 };
+
+export var config = {
+    url:"http://www.chalet581.xyz"
+};

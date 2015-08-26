@@ -24,11 +24,9 @@
 
 ### Shader的编写与编译
 
-Shader语言本人接触的比较多的有三种HLSL(DirectX),GLSL(OpenGL),AGAL(ActionScript3.0 Stage3D 汇编)
-
 早期的Shader基于的是汇编语言的语法,但是由于汇编语言语法学习成本较高,并不容易表达一些复杂方法,
 
-后来Shader语言通过引入C语言类似的语法发展成为高阶语言,方便开发者进行开发。如HLSL和GLSL都是基于C系的语法的高阶Shader语言。
+后来Shader语言通过引入C语言类似的语法发展成为高阶语言,方便开发者进行开发。如HLSL和GLSL都是基于C系的语法的高阶Shader语言。但ActionScript3.0的AGAL却是汇编语言的语法
 
 在WebGL中,Shader程序由字符串定义,在作为参数传进相应编译器,编译成机器码,然后再GPU中运行.
 

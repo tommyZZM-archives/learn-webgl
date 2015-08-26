@@ -1,7 +1,6 @@
+## Hello World
 
 <canvas name="hello"/>
-
-## HelloWorld
 
 ### 渲染管线与着色器(Shader).
 > WebGL(OpenGL ES 2.0 +)使用"顶点着色器(Vertex Shader)"取代了传统渲染管线中的“变换和光照”；“片元着色器(Fragment Shader)”取代了传统渲染管线中的“纹理环境和颜色求和”、“雾”以及“Alpha测试”。

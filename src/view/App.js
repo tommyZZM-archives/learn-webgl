@@ -8,6 +8,7 @@ import Body from './layout/Body.js';
 import Footer from './layout/Footer.js';
 
 import SampleManager from '../core/SampleManager.js';
+import {config} from "../utils/utils.js"
 
 class App extends React.Component {
     constructor(){
@@ -15,7 +16,7 @@ class App extends React.Component {
 
         this.state = this.initializeState;
         SampleManager.addListener(SampleManager.CONFIG_LOADED,this.onSampleConfigReady.bind(this));
-        SampleManager.addListener(SampleManager.TOGGLE_TO_SAMPLE,this.onSampleToggle.bind(this));
+        SampleManager.addListener(SampleManager.PRE_READY_SAMPLE,this.onSamplePreReady.bind(this));
 
         window.addEventListener('resize', () => {
             if(this.isMount){
@@ -27,7 +28,7 @@ class App extends React.Component {
     get initializeState(){
         return {
             style:{
-                minHeight:window.innerHeight-16 //document margin
+                minHeight:config.minHeight //document margin
             },
             samplesData:null,
             sampleCurr:null //当前例子
@@ -50,7 +51,7 @@ class App extends React.Component {
         });
     }
 
-    onSampleToggle(e){
+    onSamplePreReady(e){
         this.setState({
             sampleCurr:e.sample
         });

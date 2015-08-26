@@ -85,7 +85,8 @@ class SampleField extends EventDispatcher{
     }
 
     onDestruct(){
-        console.error("onDestruct not implement yet!",this._srcPath,this._distPath);
+        this.notImplementOnDestruct = true;
+        //console.error("onDestruct not implement yet!",this._srcPath,this._distPath);
     }
 }
 

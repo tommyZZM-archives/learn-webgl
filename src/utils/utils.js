@@ -28,5 +28,8 @@ export var constants = {
 };
 
 export var config = {
-    url:"http://www.chalet581.xyz"
+    url:"http://www.chalet581.xyz",
+    get minHeight(){
+        return window.innerHeight-16;
+    }
 };

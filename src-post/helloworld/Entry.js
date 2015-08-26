@@ -4,24 +4,23 @@
 
 class Sample extends app.SampleField{
     launch(canvas){
-        //console.log("hello",canvas);
         this.canvas = canvas.query[0];
+        if(!this.canvas)return;
 
-        var gl = this.canvas.getContext("webgl");
-        gl["viewportWidth"] = this.canvas.width;
-        gl["viewportHeight"] = this.canvas.height;
-        gl.viewport(0,0,this.canvas.width,this.canvas.height);
-        this.gl = gl;
+        this.gl = this.canvas.getContext("webgl");
+        this.gl["viewportWidth"] = this.canvas.width;
+        this.gl["viewportHeight"] = this.canvas.height;
+        this.gl.viewport(0,0,this.canvas.width,this.canvas.height);
 
         this.loadShaders(this.gl,()=>{
             this.onShadersLoad(this.gl);
         },[
             {
-                url:this.srcPath("glsl/vertex.glsl"),
+                url:"src-post/helloworld/glsl/vertex.glsl",//this.srcPath()
                 name:"vertex",
                 type:this.CONSTANTS.V
             },{
-                url:this.srcPath("glsl/fragment.glsl"),
+                url:"src-post/helloworld/glsl/fragment.glsl",
                 name:"fragment",
                 type:this.CONSTANTS.F
             }
@@ -37,6 +36,7 @@ class Sample extends app.SampleField{
         app.AnimationManager.onLoop(()=>{
             this.render(gl);
         });
+        app.AnimationManager.run();
     }
 
     initShader(gl){

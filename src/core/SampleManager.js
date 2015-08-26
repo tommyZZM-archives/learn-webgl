@@ -8,12 +8,13 @@ import * as async from "async";
 
 import {url,fn} from "../utils/utils.js";
 import SampleField from "./../view/content/SampleField.js";
+import AnimationManager from "./AnimationManager.js";
 
 class SampleManager extends EventDispatcher{
     /**@return {string}*/
     get CONFIG_LOADED(){return "CONFIG_LOADED";};
     /**@return {string}*/
-    get TOGGLE_TO_SAMPLE(){return "TOGGLE_TO_SAMPLE";};
+    get PRE_READY_SAMPLE(){return "PRE_READY_SAMPLE";};
     /**@return {string}*/
     //get READY_SAMPLE(){return "READY_SAMPLE";};
 
@@ -29,7 +30,8 @@ class SampleManager extends EventDispatcher{
         super();
         this.samplesData = {};
         this.samplesDict = {};//例子代码文件
-        this.currExample = null;
+        this.currSampleScript = null;
+        this.currSampleID = null;
         agent.get("dist/post_data.json").then((res)=>{
             this.samplesData = JSON.parse(res.text);
 
@@ -37,9 +39,10 @@ class SampleManager extends EventDispatcher{
             this.samplesIdDict = {};
             var id = 1;
             this.samplesData.posts.forEach((post)=>{
+                post.activeState = false;
                 post.id = id;
                 id++;
-                this.samplesDict[post.title+post.date] = post;
+                this.samplesDict[id+post.title+post.date] = post;
                 this.samplesIdDict[post.id] = post;
             });
 
@@ -54,12 +57,12 @@ class SampleManager extends EventDispatcher{
         this.toggleToSample("HEAD");
     }
 
-    toggleToSample(id){
-        if(this.currExample){
-            this.currExample.destruct();
+    toggleToSample(hashorid){
+        var sample = this.samplesDict[hashorid];
+        if(!sample){
+            sample = this.samplesIdDict[hashorid]
         }
 
-        var sample = this.samplesDict[id];
         if(sample){
             if(!sample["marddown"] && !sample["script"]){
                 async.series([
@@ -82,22 +85,44 @@ class SampleManager extends EventDispatcher{
 
                     sample["markdown"]=res_markdown;
 
-                    this.emit(this.TOGGLE_TO_SAMPLE,{sample:sample});
+                    this.preReadySample(sample);
                 });
             }else{
-                this.emit(this.TOGGLE_TO_SAMPLE,{sample:sample});
+                this.preReadySample(sample);
             }
         }
     }
 
+    preReadySample(sample){
+        //console.log("preReadySample")
+        this.samplesData.posts.forEach((post)=>{
+            post.activeState = false;
+        });
+
+        sample.activeState = true;
+
+        this.emit(this.PRE_READY_SAMPLE,{sample:sample});
+    }
+
     readySample(id,data){
+        if(id===this.currSampleID)return;
+        this.currSampleID=id;
+
         var sample = this.samplesIdDict[id];
+
+        if(this.currSampleScript){
+            this.currSampleScript.destruct();
+            if(this.currSampleScript.notImplementOnDestruct){
+                AnimationManager.stop(true);
+            }
+        }
+
         if(sample){
             if(!sample.runingScript){
                 sample.runingScript = new sample.script(url.join("src-post/",sample.path),url.join("dist/post",sample.path));
             }
             sample.runingScript.launch(data.canvas);
-            this.currExample = sample.runingScript;
+            this.currSampleScript = sample.runingScript;
         }
     }
 }

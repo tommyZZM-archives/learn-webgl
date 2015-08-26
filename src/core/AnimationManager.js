@@ -18,10 +18,11 @@ class AnimationManager extends EventDispatcher{
     constructor(){
         super();
         this._stopState = true;
-        this.run();
+        //this.run();
     }
 
     run(){
+        if(!this._stopState)return;
         this._stopState = false;
         this._loop()
     }

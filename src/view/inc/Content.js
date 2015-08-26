@@ -7,19 +7,22 @@ import {Col} from "react-bootstrap"
 import SampleRenderer from '../content/SampleRenderer.js'
 import SampleManager from '../../core/SampleManager.js';
 
+import {config} from "../../utils/utils.js"
+
 class Content extends React.Component {
 
     constructor(){
         super();
+        //SampleManager.addListener(SampleManager.PRE_READY_SAMPLE,this.onSamplePreReady.bind(this));
     }
 
-    componentDidMount() {
-
-    }
+    //onSamplePreReady() {
+    //
+    //}
 
     render(){
         return (
-            <Col className="content " md={9}>
+            <Col className="content " md={9} style={{minHeight:config.minHeight-138-91}}>
                 {(()=>{
                     if(this.props.sampleContent&&this.props.sampleContent.id){
                         return <Markdown id={this.props.sampleContent.id} source={this.props.sampleContent.markdown}/>
@@ -33,6 +36,7 @@ class Content extends React.Component {
 class Markdown extends React.Component{
     constructor() {
         super();
+
         this.markRenderer = new SampleRenderer({sourcepos: true});
         this.isRenderSuccess = false;
 
@@ -40,11 +44,15 @@ class Markdown extends React.Component{
         this.canvasDict = {};
 
         this.markRenderer.renderHtml("canvas",(tag,attrs)=>{
-            return <Canvas parent={this} attrs={attrs}/>;
-        })
+            return <Canvas parent={this} name={attrs.name||""} belongsto={this.props.id}/>;
+        });
     }
 
-    componentDidMount() {
+    componentDidMount(){
+        this.componentDidUpdate();
+    }
+
+    componentDidUpdate(){
         var dict = {};
         for(var i in this.canvasDict){
             dict[i] = React.findDOMNode(this.canvasDict[i])
@@ -56,9 +64,8 @@ class Markdown extends React.Component{
                 dirct:dict
             }
         };
-        if(this.isRenderSuccess){
-            SampleManager.readySample(this.props.id,data);
-        }
+        SampleManager.readySample(this.props.id,data);
+        this.canvasQuery = [];
     }
 
     render(){
@@ -69,6 +76,7 @@ class Markdown extends React.Component{
                     return !React.isValidElement(ele)
                 })){
                 this.isRenderSuccess = true;
+
                 return React.createElement.apply(React,["div",{className:"markdown"}].concat(elements));
             }
         }
@@ -78,14 +86,20 @@ class Markdown extends React.Component{
 
 class Canvas extends React.Component{
     componentDidMount() {
+        this.componentDidUpdate();
+    }
+
+    componentDidUpdate(){
         var parent = this.props.parent;
         var canvas = React.findDOMNode(this);
         parent.canvasQuery.push(canvas);
-        if(this.props.attrs.name)parent.canvasDict[this.props.attrs.name]=canvas;
+        if(this.props.name)parent.canvasDict[this.props.name]=canvas;
     }
 
     render(){
-        return React.createElement("canvas",this.props.attrs)
+        return (
+            <canvas name={this.props.name} data-belongsto={this.props.belongsto}></canvas>
+        )
     }
 }
 

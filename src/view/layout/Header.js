@@ -25,7 +25,7 @@ class Header extends React.Component {
                 </nav>
                 <nav className="site-nav">
                     <ul>
-                        <li className="curr"><a>笔记</a></li>
+                        <li className="curr"><a>栗子</a></li>
                     </ul>
                 </nav>
             </header>

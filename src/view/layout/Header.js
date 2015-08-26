@@ -8,7 +8,7 @@ class Header extends React.Component {
     render(){
         return (
             <header id="site-header">
-                <h1 className="page-title">WebGL Pratice</h1>
+                <h1 className="page-title">WebGL test</h1>
 
                 <nav className="social-nav">
                     <ul>
@@ -18,7 +18,7 @@ class Header extends React.Component {
                             </a>
                         </li>
                         <li>
-                            <a href={config.url} title="blog"><span className="fa fa-ellipsis-h"></span>
+                            <a href={config.url} title="blog"><span className="fa fa-home"></span>
                             </a>
                         </li>
                     </ul>

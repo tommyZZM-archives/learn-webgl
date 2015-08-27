@@ -3,7 +3,7 @@
  */
 
 class Sample extends app.SampleField{
-    launch(canvas){
+    onLaunch(canvas){
         this.canvas = canvas.query[0];
         if(!this.canvas)return;
 

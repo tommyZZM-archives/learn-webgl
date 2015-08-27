@@ -14,7 +14,7 @@ SHADER_TYPE["vertex"] = WebGLRenderingContext.VERTEX_SHADER;
 SHADER_TYPE["fragment"] = WebGLRenderingContext.FRAGMENT_SHADER;
 
 class SampleField extends EventDispatcher{
-    constructor(src,dist){
+    constructor(id,src,dist){
         super();
         this["_srcPath"] = src;
         this["_distPath"] = dist;
@@ -22,6 +22,7 @@ class SampleField extends EventDispatcher{
         this.CONSTANTS = Object.assign({},utils.constants);
         this.CONSTANTS.V = this.CONSTANTS.VERTEX_SHADER = "vertex";
         this.CONSTANTS.F = this.CONSTANTS.FRAGMENT_SHADER = "fragment";
+        this._launchState = false;
     }
 
     srcPath(url){
@@ -69,19 +70,34 @@ class SampleField extends EventDispatcher{
         });
 
         async.series(tasks,()=>{
-            cb();
+            if(this.launchState){
+                cb();
+            }
         })
     }
 
-    launch(canvas){
-        //TODO:需要传入canvas
+    get launch(){
+        return (canvas)=>{
+            this._launchState = true;
+            this.onLaunch(canvas);
+            this.emit("launch");
+        }
     }
 
     get destruct(){
         return ()=>{
+            this._launchState = false;
             this.onDestruct();
             this.emit("destruct")
         }
+    }
+
+    get launchState(){
+        return this._launchState;
+    }
+
+    onLaunch(canvas){
+
     }
 
     onDestruct(){

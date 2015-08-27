@@ -57,7 +57,7 @@ class SampleManager extends EventDispatcher{
         this.toggleToSample("HEAD");
     }
 
-    toggleToSample(hashorid){
+    toggleToSample(hashorid,cb){
         var sample = this.samplesDict[hashorid];
         if(!sample){
             sample = this.samplesIdDict[hashorid]
@@ -85,21 +85,26 @@ class SampleManager extends EventDispatcher{
 
                     sample["markdown"]=res_markdown;
 
-                    this.preReadySample(sample);
+                    if(!err){
+                        this.preReadySample(sample,cb);
+                    }else{
+                        if(typeof cb==="function"){cb();}
+                    }
                 });
             }else{
-                this.preReadySample(sample);
+                this.preReadySample(sample,cb);
             }
         }
     }
 
-    preReadySample(sample){
+    preReadySample(sample,cb){
         //console.log("preReadySample")
         this.samplesData.posts.forEach((post)=>{
             post.activeState = false;
         });
 
         sample.activeState = true;
+        if(typeof cb==="function"){cb();}
 
         this.emit(this.PRE_READY_SAMPLE,{sample:sample});
     }

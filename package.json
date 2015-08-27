@@ -13,6 +13,7 @@
     "async": "^1.4.2",
     "babel-loader": "^5.3.2",
     "babel-runtime": "^5.8.3",
+    "color": "^0.10.1",
     "component-emitter": "^1.2.0",
     "connect": "^3.4.0",
     "gulp": "^3.9.0",

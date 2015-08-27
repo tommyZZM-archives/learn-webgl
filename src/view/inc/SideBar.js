@@ -33,30 +33,61 @@ class SideBar extends React.Component {
 
         var items = list.map((sample)=>{
             return (
-                <ListGroupItem key={sample.id}
-                               active={!!sample.activeState}
-                               onClick={this.onClickSampleItem.bind(this, sample)}>
-                    {sample.title}
-                </ListGroupItem>
+                <SideBarListItem key={sample.id}
+                                 sampleId = {sample.id}
+                                 active={!!sample.activeState}
+                                 title={sample.title}
+                    >
+                </SideBarListItem>
             )
         });
 
         if(helloworld) {
             items.unshift(
-                <ListGroupItem key={helloworld.id}
-                               active={!!helloworld.activeState}
-                               onClick={this.onClickSampleItem.bind(this, helloworld)}>
-                    {helloworld.title}
-                </ListGroupItem>
+                <SideBarListItem
+                    key={helloworld.id}
+                    sampleId={helloworld.id}
+                    active={!!helloworld.activeState}
+                    title={helloworld.title}
+                    >
+                </SideBarListItem>
             );
         }
 
         return items;
     }
+}
 
-    onClickSampleItem(sample,e){
+class SideBarListItem extends ListGroupItem{
+    constructor(){
+        super();
+        this.state = {
+            isLoading:false
+        };
+    }
+
+    onClickSampleItem(e){
+        var sample = SampleManager.samplesIdDict[this.props.sampleId];
         if(!!sample.activeState)return;
-        SampleManager.toggleToSample(sample.id);
+        this.setState({isLoading:true});
+        SampleManager.toggleToSample(sample.id,()=>{
+            this.setState({isLoading:false});
+        });
+    }
+
+    render(){
+        return (
+            <ListGroupItem
+                       active={!!this.props.active}
+                       onClick={this.onClickSampleItem.bind(this)}>
+                {this.props.title}
+                {(()=>{
+                    if(this.state.isLoading){
+                        return <span className="sign loading"></span>
+                    }
+                })()}
+            </ListGroupItem>
+        );
     }
 }
 

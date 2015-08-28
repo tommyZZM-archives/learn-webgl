@@ -94,16 +94,15 @@ class Canvas extends React.Component{
         var parent = this.props.parent;
         var canvas = React.findDOMNode(this);
         parent.canvasQuery.push(canvas);
-        var gl=canvas.getContext("webgl");
-        var background = canvas.style.backgroundColor||window.getComputedStyle(canvas).backgroundColor;
-        background = color(background).rgb();
-        gl.clearColor(background.r/255, background.g/255, background.b/255, 1.0);
-        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+        //var gl=canvas.getContext("webgl");
+        //var background = canvas.style.backgroundColor||window.getComputedStyle(canvas).backgroundColor;
+        //background = color(background).rgb();
+        //gl.clearColor(background.r/255, background.g/255, background.b/255, 1.0);
+        //gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
         if(this.props.name)parent.canvasDict[this.props.name]=canvas;
     }
 
     render(){
-        console.log(this.props.belongsto+"_"+this.props.name);
         return (
             <canvas key={this.props.belongsto+"_"+this.props.name} name={this.props.name} data-belongsto={this.props.belongsto}></canvas>
         )

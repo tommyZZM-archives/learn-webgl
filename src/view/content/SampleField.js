@@ -77,9 +77,9 @@ class SampleField extends EventDispatcher{
     }
 
     get launch(){
-        return (canvas)=>{
+        return (canvas,data)=>{
             this._launchState = true;
-            this.onLaunch(canvas);
+            this.onLaunch.apply(this,[canvas,data||{}]);
             this.emit("launch");
         }
     }

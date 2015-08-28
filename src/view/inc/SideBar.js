@@ -2,7 +2,7 @@
  * Created by tommyZZM on 2015/8/8.
  */
 import React from 'react';
-import {Col,Input,ListGroup,ListGroupItem} from "react-bootstrap"
+import {Col,Input,ListGroup,ListGroupItem,Pagination} from "react-bootstrap"
 
 import SampleManager from '../../core/SampleManager.js';
 
@@ -22,8 +22,19 @@ class SideBar extends React.Component {
                     {this.renderSampleItem()}
                 </ListGroup>
             </div>
+
         </Col>
-        )
+        );
+
+        /*`
+        <Pagination
+                prev
+                next
+                items={3}
+                maxButtons={3}
+                activePage={1}
+                onSelect={()=>{}} />
+        `*/
     }
 
     renderSampleItem(){

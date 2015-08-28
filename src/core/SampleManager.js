@@ -126,7 +126,7 @@ class SampleManager extends EventDispatcher{
             if(!sample.runingScript){
                 sample.runingScript = new sample.script(sample.id,url.join("src-post/",sample.path),url.join("dist/post",sample.path));
             }
-            sample.runingScript.launch(data.canvas);
+            sample.runingScript.launch(data.canvas,data);
             this.currSampleScript = sample.runingScript;
         }
     }

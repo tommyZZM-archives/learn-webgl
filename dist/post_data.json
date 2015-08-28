@@ -1,23 +1,23 @@
 {
-  "base":"./src-post",
-  "posts":[
-    {
-      "title":"HelloWorld",
-      "path":"./helloworld/",
-      "tags":"",
-      "date":"20150821"
-    },
-    {
-      "title":"Shader",
-      "path":"./2015/08-26-Shader",
-      "tags":"",
-      "date":"20150826"
-    },
-    {
-      "title":"Buffer&Shape",
-      "path":"./2015/08-26-Buffer&Shape",
-      "tags":"",
-      "date":"20150826"
-    }
-  ]
+    "base": "./src-post",
+    "posts": [
+        {
+            "title": "HelloWorld",
+            "path": "./helloworld/",
+            "tags": "",
+            "date": "2015-08-21"
+        },
+        {
+            "title": "Shader",
+            "path": "./2015/08-26-Shader",
+            "tags": "",
+            "date": "2015-08-26"
+        },
+        {
+            "title": "Buffer&Shape",
+            "path": "./2015/08-26-Buffer&Shape",
+            "tags": "",
+            "date": "2015-08-26"
+        }
+    ]
 }

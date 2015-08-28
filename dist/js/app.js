@@ -1,3 +1,5 @@
+//version:f79be2
+
 var app =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache

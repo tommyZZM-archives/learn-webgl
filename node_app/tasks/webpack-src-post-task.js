@@ -17,6 +17,8 @@ var concat = require("gulp-concat");
 var add = require("gulp-add");
 var rename = require("gulp-rename");
 
+var version = require("../utils/version2head");
+
 var config = global.gulpConfig;
 
 gulp.task("@webpack-sample-entryjs",function(){
@@ -48,6 +50,7 @@ gulp.task("@webpack-sample-entryjs",function(){
                     //gulp.start(["@webpack-clean-tmp"]);
                 }))
                 .pipe(rename("Entry.js"))
+                .pipe(version())
                 .pipe(gulp.dest(path.join("./dist/post", sample.path, "/")));
         });
 

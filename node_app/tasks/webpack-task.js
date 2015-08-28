@@ -15,6 +15,8 @@ var merge = require("merge-stream");
 var concat = require("gulp-concat");
 var add = require("gulp-add");
 
+var version = require("../utils/version2head");
+
 var extname = ".es6~";
 
 gulp.task("@webpack-clean-tmp",function(){
@@ -93,6 +95,7 @@ gulp.task("@webpack-src-domainjs",["@rename-src-domainjs"], function() {
             if (err) throw new gutil.PluginError("webpack", err);
             //gulp.start(["@webpack-clean-tmp"]);
         }))
+        .pipe(version())
         .pipe(gulp.dest("./dist/js"));
 });
 

@@ -103,8 +103,9 @@ class Canvas extends React.Component{
     }
 
     render(){
+        console.log(this.props.belongsto+"_"+this.props.name);
         return (
-            <canvas name={this.props.name} data-belongsto={this.props.belongsto}></canvas>
+            <canvas key={this.props.belongsto+"_"+this.props.name} name={this.props.name} data-belongsto={this.props.belongsto}></canvas>
         )
     }
 }

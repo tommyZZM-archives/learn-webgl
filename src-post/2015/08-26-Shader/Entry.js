@@ -47,7 +47,7 @@ class Sample extends app.SampleField{
         y = (ch/2 - (e.clientY - rect.top))/(ch/2);
 
         this._points.push({x:x, y:y});
-        console.log(this._points,x,y,e.clientX,e.clientY,rect)
+        //console.log(this._points,x,y,e.clientX,e.clientY,rect)
     }
 
     onShadersLoad(gl){

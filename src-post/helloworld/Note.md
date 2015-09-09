@@ -2,4 +2,3 @@
 
 <canvas name="hello"/>
 
-hello

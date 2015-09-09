@@ -20,6 +20,7 @@ gulp.task("new",function(){
     var postdataStr = "";
     if(!name){
         //更新下列表
+        console.log("use -n to defined a name");
         postsrefresh = postdata.posts.filter(function(post){
             return post && fs.existsSync(path.join("./src-post",post.path));
         });
@@ -46,6 +47,7 @@ gulp.task("new",function(){
 
     //判断名称是否重复
     if(postdata.posts.some(function(post){
+            console.log(post.title,name);
             return post.title === name;
         }) && !args["f"] && !args["force"]){
         console.log(name,"has already been taken! use -f or -force to try?");
@@ -56,7 +58,7 @@ gulp.task("new",function(){
     var copyFromHello = true;
     if(fs.existsSync(fullSrcPath) && !args["a"] && !args["add"] ){
         return;
-    }else{
+    }else if(fs.existsSync(fullSrcPath)){
         if(postdata.posts.some(function(post){
                 //console.log(path.join("./src-post",post.path) === fullSrcPath);
                 return path.join("./src-post",post.path) === fullSrcPath;

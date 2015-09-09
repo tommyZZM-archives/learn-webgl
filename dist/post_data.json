@@ -14,10 +14,22 @@
             "date": "2015-08-26"
         },
         {
-            "title": "Buffer&Shape",
+            "title": "Buffer & Shape",
             "path": "./2015/08-26-Buffer&Shape",
             "tags": "",
             "date": "2015-08-26"
+        },
+        {
+            "title": "Math",
+            "path": "2015\\09-03-Math",
+            "tags": "",
+            "date": "2015-09-03"
+        },
+        {
+            "title": "Linear Algebra",
+            "path": "2015\\09-09-LinearAlgebra",
+            "tags": "",
+            "date": "2015-09-09"
         }
     ]
 }

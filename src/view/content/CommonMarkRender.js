@@ -131,17 +131,11 @@ class Renderer implements ICommonmarkRenderer{
                                         i++;
                                         style = domIdentity.childNodes[0].style[i];
                                     }
-                                };
-                                //domIdentity.childNodes[0].style = attrs["style"];
-                                console.log(attrs)
+                                }
 
                                 htmlele = self.createElement(
                                     "p",
-                                    null,
-                                    [self.createElement(
-                                        htmltag,
-                                        attrs
-                                    )]
+                                    {dangerouslySetInnerHTML:{__html:node.literal}}
                                 );
                             }
 

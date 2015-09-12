@@ -122,9 +122,26 @@ class Renderer implements ICommonmarkRenderer{
                             if(typeof this.howRenderHtml[htmltag]==="function"){
                                 htmlele = this.howRenderHtml[htmltag](htmltag,attrs);
                             }else{
+                                if(attrs["style"]){
+                                    attrs["style"] = {};
+                                    var i =0;
+                                    var style = domIdentity.childNodes[0].style[i];
+                                    while(style){
+                                        attrs["style"][style] = domIdentity.childNodes[0].style[style];
+                                        i++;
+                                        style = domIdentity.childNodes[0].style[i];
+                                    }
+                                };
+                                //domIdentity.childNodes[0].style = attrs["style"];
+                                console.log(attrs)
+
                                 htmlele = self.createElement(
-                                    htmltag,
-                                    attrs
+                                    "p",
+                                    null,
+                                    [self.createElement(
+                                        htmltag,
+                                        attrs
+                                    )]
                                 );
                             }
 

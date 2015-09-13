@@ -23,9 +23,24 @@
 
 矩阵间的相乘就不太一样了,矩阵相乘的规则定义来自矩阵的本质，即矩阵作是一种线性方程组的表示形式。(见参考文献)
 
+<img  src="http://7o51mi.com1.z0.glb.clouddn.com/webgl/20150913/illustration1.PNG" style="max-width:360px">
 
+线性方程组可以通过矩阵表示,分析这样的规则之后可得
 
+<img  src="http://7o51mi.com1.z0.glb.clouddn.com/webgl/20150913/illustration2(1).PNG" style="max-width:260px">
 
+对于更加复杂的方程组结构，也有同样的规则
+
+<img  src="http://7o51mi.com1.z0.glb.clouddn.com/webgl/20150913/illustration3(1).PNG" style="max-width:390px">
+
+每个行元素逐次乘以每个列元素的规则进行运算
+
+也可以发现，矩阵相乘的时候，A的列数必须等于B的行数。
+
+相乘前后矩阵维数的关系。
+````
+A(m x n) * B(n * 1) = M(m * l)
+````
 
 ###### 参考
 - [理解矩阵乘法](http://www.ruanyifeng.com/blog/2015/09/matrix-multiplication.html)

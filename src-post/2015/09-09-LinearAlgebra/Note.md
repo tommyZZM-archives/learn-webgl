@@ -31,7 +31,7 @@
 
 对于更加复杂的方程组结构，也有同样的规则
 
-<img  src="http://7o51mi.com1.z0.glb.clouddn.com/webgl/20150913/illustration3(1).PNG" style="max-width:390px">
+<img  src="http://7o51mi.com1.z0.glb.clouddn.com/webgl/20150913/illustration3(2).PNG" style="max-width:390px">
 
 每个行元素逐次乘以每个列元素的规则进行运算
 

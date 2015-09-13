@@ -2,12 +2,6 @@
     "base": "./src-post",
     "posts": [
         {
-            "title": "HelloWorld",
-            "path": "./helloworld/",
-            "tags": "",
-            "date": "2015-08-21"
-        },
-        {
             "title": "Shader",
             "path": "./2015/08-26-Shader",
             "tags": "",

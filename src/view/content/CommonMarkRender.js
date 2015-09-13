@@ -134,8 +134,12 @@ class Renderer implements ICommonmarkRenderer{
                                 }
 
                                 htmlele = self.createElement(
-                                    "p",
-                                    {dangerouslySetInnerHTML:{__html:node.literal}}
+                                    "div",
+                                    null,
+                                    [self.createElement(
+                                        "p",
+                                        {dangerouslySetInnerHTML:{__html:node.literal}}
+                                    )]
                                 );
                             }
 

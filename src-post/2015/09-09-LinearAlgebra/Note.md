@@ -23,7 +23,7 @@
 
 矩阵间的相乘就不太一样了,矩阵相乘的规则定义来自矩阵的本质，即矩阵作是一种线性方程组的表示形式。(见参考文献)
 
-<img  src="http://7o51mi.com1.z0.glb.clouddn.com/webgl/20150913/illustration1.PNG" style="max-width:360px">
+<img  src="http://7o51mi.com1.z0.glb.clouddn.com/webgl/20150913/illustration1.PNG" style="max-width:260px">
 
 线性方程组可以通过矩阵表示,分析这样的规则之后可得
 

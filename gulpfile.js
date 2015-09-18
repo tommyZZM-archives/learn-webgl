@@ -29,6 +29,7 @@ global.gulpConfig = {
     externals:{
         react: 'window.React',
         pixi: 'window.PIXI',
+        katex: 'window.katex',
         "react-bootstrap":"window.ReactBootstrap"
     },
     gulp:gulp

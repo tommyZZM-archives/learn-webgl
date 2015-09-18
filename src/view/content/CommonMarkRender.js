@@ -204,6 +204,14 @@ class Renderer implements ICommonmarkRenderer{
                     if(typeof hljs!=="undefined"){
                         //console.log(hljs.highlightAuto(node.literal,[infoWords[0]]))
                         code.innerHTML = hljs.highlightAuto(node.literal,[infoWords[0]]).value
+                    }else{
+                        code.innerHTML = node.literal;
+                    }
+
+                    if(infoWords[0]==="math"){
+                        //console.log(node.literal)
+                        var math = katex.renderToString(node.literal);
+                        code.innerHTML = math;
                     }
 
                     //var code = self.createElement('code', attrs, [node.literal]);

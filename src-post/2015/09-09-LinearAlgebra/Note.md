@@ -1,4 +1,4 @@
-## 线性代数与矩阵
+﻿## 线性代数与矩阵
 
 ### 矩阵?
 在数学中，矩阵（Matrix）是指纵横排列的二维数据表格，最早来自于方程组的系数及常数所构成的方阵。
@@ -9,15 +9,17 @@
 
 ### 矩阵运算
 
-#### 加减法
+#### 线性运算
+
+- **加减法**:
 
 矩阵的加减法计算十分简单,把矩阵中每个元素进行±即可,注意的是只有两个同样维数的矩阵才能进行加减操作。
-
-#### 乘法
 
 - **"数"×"矩阵"**:
 
 <img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015090102.png" alt="" title="插图来自于www.ruanyifeng.com(c)" style="max-width:230px">
+
+#### 乘法
 
 - **"矩阵"×"矩阵"**:
 
@@ -38,9 +40,33 @@
 也可以发现，矩阵相乘的时候，A的列数必须等于B的行数。
 
 相乘前后矩阵维数的关系。
+````math
+A_{m*n} * B_{n*p} = M_{m*p}
 ````
-A(m x n) * B(n * 1) = M(m * l)
-````
+
+#### 转置与逆矩阵
+
+把一个矩阵A(m x n),各行作为相同序号的列(向顺时针旋转90度并镜像),形成一个新的矩阵,称之为A的转置
+
+`````math
+\begin{pmatrix}
+a_{11} & a_{12}\\ 
+a_{21} & a_{22}\\ 
+a_{31} & a_{32}
+\end{pmatrix}
+`````
+转置
+`````math
+\begin{pmatrix}
+a_{11} & a_{21} & a_{31}\\ 
+a_{12} & a_{22} & a_{32}
+\end{pmatrix}
+`````
+
+
+#### 基
+
+
 
 ###### 参考
 - [理解矩阵乘法](http://www.ruanyifeng.com/blog/2015/09/matrix-multiplication.html)
@@ -51,9 +77,21 @@ A(m x n) * B(n * 1) = M(m * l)
 
 
 
+## 齐次坐标(Homogeneous Coordinates)
 
-## Quaternions
+> “齐次坐标表示是计算机图形学的重要手段之一，它既能够用来明确区分向量和点，同时也更易用于进行仿射（线性）几何变换。”
+  —— F.S. Hill, JR。
+
+
+
+###### 参考
+- [Homogeneous Coordinates](http://www.songho.ca/math/homogeneous/homogeneous.html)([译文](http://blog.csdn.net/janestar/article/details/44244849))
+- [关于齐次坐标的理解](http://www.cnblogs.com/lizhengjin/p/3781005.html)
+
+
+## 四元数(Quaternions)
 
 ##### 参考
 
 - [Understanding Quaternions](http://www.3dgep.com/understanding-quaternions/)
+- [Quaternion](http://www.songho.ca/math/quaternion/quaternion.html)

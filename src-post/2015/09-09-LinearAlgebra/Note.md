@@ -15,9 +15,38 @@
 
 矩阵的加减法计算十分简单,把矩阵中每个元素进行±即可,注意的是只有两个同样维数的矩阵才能进行加减操作。
 
+`````math
+\begin{pmatrix}
+a_{11} & a_{21}\\
+a_{12} & a_{22}
+\end{pmatrix}
++
+\begin{pmatrix}
+b_{11} & b_{21}\\
+b_{12} & b_{22}
+\end{pmatrix}
+=
+\begin{pmatrix}
+a_{11}+b_{11} & a_{21}+b_{21}\\
+a_{12}+b_{12} & a_{22}+b_{22}
+\end{pmatrix}
+`````
+
 - **"数"×"矩阵"**:
 
-<img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015090102.png" alt="" title="插图来自于www.ruanyifeng.com(c)" style="max-width:230px">
+`````math
+n
+*
+\begin{pmatrix}
+a_{11} & a_{21}\\
+a_{12} & a_{22}
+\end{pmatrix}
+=
+\begin{pmatrix}
+n*a_{11} & n*a_{21}\\
+n*a_{12} & n*a_{22}
+\end{pmatrix}
+`````
 
 #### 乘法
 
@@ -25,7 +54,30 @@
 
 矩阵间的相乘就不太一样了,矩阵相乘的规则定义来自矩阵的本质，即矩阵作是一种线性方程组的表示形式。(见参考文献)
 
-<img  src="http://7o51mi.com1.z0.glb.clouddn.com/webgl/20150913/illustration1.PNG" style="max-width:200px">
+````math
+\begin{cases}
+a_{11}*x_{1}+a_{12}*x_{2} = y_{1}
+\\
+a_{21}*x_{1}+a_{22}*x_{2} = y_{2}
+\end{cases}
+````
+
+````math
+\begin{pmatrix}
+a_{11} & a_{21}\\
+a_{12} & a_{22}
+\end{pmatrix}
+*
+\begin{pmatrix}
+x_{1}\\
+x_{2}
+\end{pmatrix}
+=
+\begin{pmatrix}
+y_{1}\\
+y_{2}
+\end{pmatrix}
+````
 
 线性方程组可以通过矩阵表示,分析这样的规则之后可得
 
@@ -54,13 +106,14 @@ a_{11} & a_{12}\\
 a_{21} & a_{22}\\ 
 a_{31} & a_{32}
 \end{pmatrix}
-`````
-转置
-`````math
+
+\Rightarrow
+
 \begin{pmatrix}
-a_{11} & a_{21} & a_{31}\\ 
+a_{11} & a_{21} & a_{31}\\
 a_{12} & a_{22} & a_{32}
 \end{pmatrix}
+
 `````
 
 

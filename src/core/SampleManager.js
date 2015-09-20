@@ -60,7 +60,7 @@ class SampleManager extends EventDispatcher{
 
         window.addEventListener("hashchange", (e)=>{
             var route = BrowseRouteManager.checkCurrRoute();
-            console.log(route.sample)
+            //console.log(route.sample)
             this.toggleToSample(route.sample);
         },false);
 
@@ -74,7 +74,7 @@ class SampleManager extends EventDispatcher{
             sample = this.samplesIdDict[hashorid];
         }
 
-        console.log("toggleToSample",hashorid,this.samplesDict,this.samplesDict[hashorid]);
+        //console.log("toggleToSample",hashorid,this.samplesDict,this.samplesDict[hashorid]);
 
         if(sample){
             if(!sample["marddown"] && !sample["script"]){

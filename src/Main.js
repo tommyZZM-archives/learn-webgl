@@ -7,6 +7,7 @@ import App from './view/App.js';
 
 import SampleManager from './core/SampleManager.js';
 import AnimationManager from './core/AnimationManager.js';
+import BrowseRouteManager from './core/BrowseRouteManager.js';
 import SampleField from './view/content/SampleField.js';
 
 class Main{

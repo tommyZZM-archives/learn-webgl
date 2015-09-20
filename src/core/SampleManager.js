@@ -9,6 +9,7 @@ import * as async from "async";
 import {url,fn} from "../utils/utils.js";
 import SampleField from "./../view/content/SampleField.js";
 import AnimationManager from "./AnimationManager.js";
+import BrowseRouteManager from './BrowseRouteManager.js';
 
 class SampleManager extends EventDispatcher{
     /**@return {string}*/
@@ -42,7 +43,9 @@ class SampleManager extends EventDispatcher{
                 post.activeState = false;
                 post.id = id;
                 id++;
-                this.samplesDict[id+post.title+post.date] = post;
+                post.path = post.path.replace("\\","\/");
+                post.path = post.path.replace("\&","-");
+                this.samplesDict[post.path] = post;
                 this.samplesIdDict[post.id] = post;
             });
 
@@ -54,14 +57,24 @@ class SampleManager extends EventDispatcher{
 
     finsishLoadConfig(){
         this.emit(this.CONFIG_LOADED);
-        this.toggleToSample("HEAD");
+
+        window.addEventListener("hashchange", (e)=>{
+            var route = BrowseRouteManager.checkCurrRoute();
+            console.log(route.sample)
+            this.toggleToSample(route.sample);
+        },false);
+
+        var route = BrowseRouteManager.checkCurrRoute();
+        this.toggleToSample(route.sample);
     }
 
     toggleToSample(hashorid,cb){
         var sample = this.samplesDict[hashorid];
         if(!sample){
-            sample = this.samplesIdDict[hashorid]
+            sample = this.samplesIdDict[hashorid];
         }
+
+        console.log("toggleToSample",hashorid,this.samplesDict,this.samplesDict[hashorid]);
 
         if(sample){
             if(!sample["marddown"] && !sample["script"]){
@@ -94,6 +107,8 @@ class SampleManager extends EventDispatcher{
             }else{
                 this.preReadySample(sample,cb);
             }
+        }else{
+            window.location.href = "http://www.chalet581.xyz/404"
         }
     }
 
@@ -105,6 +120,10 @@ class SampleManager extends EventDispatcher{
 
         sample.activeState = true;
         if(typeof cb==="function"){cb();}
+
+        BrowseRouteManager.changeLoactionHash({
+            sample:sample.path
+        });
 
         this.emit(this.PRE_READY_SAMPLE,{sample:sample});
     }

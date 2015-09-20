@@ -3,19 +3,19 @@
     "posts": [
         {
             "title": "Shader",
-            "path": "./2015/08-26-Shader",
+            "path": "2015\\08-26-Shader",
             "tags": "",
             "date": "2015-08-26"
         },
         {
-            "title": "Buffer & Shape",
-            "path": "./2015/08-27-Buffer&Shape",
+            "title": "Buffer Shape",
+            "path": "2015\\08-27-Buffer-Shape",
             "tags": "",
             "date": "2015-08-27"
         },
         {
-            "title": "Triangular&Algebra",
-            "path": "2015\\09-03-Triangular&Algebra",
+            "title": "Triangular Algebra",
+            "path": "2015\\09-03-Triangular-Algebra",
             "tags": "",
             "date": "2015-09-03"
         },

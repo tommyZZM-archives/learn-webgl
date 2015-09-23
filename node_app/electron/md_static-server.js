@@ -8,6 +8,7 @@ var serveIndex = require('serve-index');
 
 var config = {};//global.gulpConfig;
 config.server = {
+    //port:9997,
     localhost:true
 };
 

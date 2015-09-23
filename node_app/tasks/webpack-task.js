@@ -59,7 +59,7 @@ gulp.task("@rename-src-domainjs",function(){
 
 //source build
 gulp.task("@webpack-src-domainjs",["@rename-src-domainjs"], function() {
-    gulp.src("./dist/js/*.js").pipe(clean());
+    //gulp.src("./dist/js/*.js").pipe(clean());
 
     var domains = config.domains;
 

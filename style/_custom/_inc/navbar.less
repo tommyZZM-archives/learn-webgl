@@ -5,9 +5,132 @@
   }
 }
 
+//Default Skin
 .navbar-default{
   background: none;
   border: none;
   font-size: 15px;
   border-bottom: 1px solid @color-black05;
+
+  .navbar-brand {
+    color: @navbar-default-brand-color;
+    &:hover,
+    &:focus {
+      color: @navbar-default-brand-hover-color;
+      background-color: inherit;//@navbar-default-brand-hover-bg;
+    }
+  }
+
+  .navbar-text {
+    color: @navbar-default-color;
+  }
+
+  .navbar-nav {
+    > li > a {
+      font-weight: bold;
+      color: @navbar-default-link-color;
+      padding-top:    18px;
+      padding-bottom: 12px;
+      border-bottom: 3px solid #fff;
+
+      &:hover
+      /*&:focus*/ {
+        color: @navbar-default-link-hover-color;
+        border-bottom: 3px solid @brand-primary-hover;
+        background-color: inherit;//@navbar-default-link-hover-bg;
+      }
+    }
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navbar-default-link-active-color;
+        background-color: inherit;//@navbar-default-link-active-bg;
+      }
+    }
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        //color: @navbar-default-link-disabled-color;
+        background-color: inherit;//@navbar-default-link-disabled-bg;
+      }
+    }
+  }
+
+  .navbar-toggle {
+    border-color: @navbar-default-toggle-border-color;
+    &:hover,
+    &:focus {
+      background-color: inherit;//@navbar-default-toggle-hover-bg;
+    }
+    .icon-bar {
+      background-color: inherit;//@navbar-default-toggle-icon-bar-bg;
+    }
+  }
+
+  .navbar-collapse,
+  .navbar-form {
+    border-color: @navbar-default-border;
+  }
+
+  // Dropdown menu items
+  .navbar-nav {
+    // Remove background color from open dropdown
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+
+        background-color:inherit;// @navbar-default-link-active-bg;
+        color: @navbar-default-link-active-color;
+      }
+    }
+  }
+}
+
+//Default .nav-divier
+//Default Skin
+.navbar-default{
+  .dropdown{
+    .dropdown-menu{
+      padding: 0;
+      margin-top: 5px;
+
+      .divider{
+        height: 1px;
+        margin: 0;
+        overflow: hidden;
+        background-color: @color-black05;
+      }
+
+      li:not(.divider){
+        padding: 5px 0;
+
+        &.active,
+        &.active:hover,
+        &.active:focus{
+          background-color: @list-group-active-bg;
+          border-color: @list-group-active-border;
+        }
+
+        a{
+          &,
+          &:hover,
+          &:focus {
+            background-color:inherit;
+            outline: none;
+          }
+          padding-left: 15px;
+        }
+
+        &:hover,
+        &:focus {
+          text-decoration: none;
+          color: @list-group-link-hover-color;
+          background-color: @list-group-hover-bg;
+        }
+      }
+    }
+  }
 }

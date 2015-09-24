@@ -4,7 +4,8 @@
 import React from 'react';
 import {config} from "../../utils/utils.js";
 import {CollapsibleNav,Navbar,Nav,NavItem,DropdownButton,MenuItem} from "react-bootstrap"
-console.log(require("react-bootstrap"))
+
+import CatalogDropList from "../inc/CatalogDropList";
 
 class Header extends React.Component {
     render(){
@@ -22,28 +23,16 @@ class NavbarWrapper extends React.Component{
         return (
             <Navbar className="site-nav" bsStyle="default">
                 <Nav navbar collapsible>
-                    <DropdownButton eventKey={3} title={"Math"} id="nav-brand-dropdown">
-                        <MenuItem eventKey="1">test</MenuItem>
-                        <MenuItem divider />
-                        <MenuItem eventKey="4">test2 link</MenuItem>
-                    </DropdownButton>
-                    <DropdownButton eventKey={3} title={"WebGL"} id="nav-brand-dropdown">
-                        <MenuItem eventKey="1">test</MenuItem>
-                        <MenuItem divider />
-                        <MenuItem eventKey="4">test2 link</MenuItem>
-                    </DropdownButton>
-                    <DropdownButton eventKey={3} title={"WebCL"} id="nav-brand-dropdown">
-                        <MenuItem eventKey="1">test</MenuItem>
-                        <MenuItem divider />
-                        <MenuItem eventKey="4">test2 link</MenuItem>
-                    </DropdownButton>
+                    <CatalogDropList eventKey={1} title={config.catalog.Math}/>
+                    <CatalogDropList eventKey={2} title={config.catalog.WebGL}/>
+                    <CatalogDropList eventKey={3} title={config.catalog.WebCL}/>
                 </Nav>
-                <Nav ulClassName="hidden-xs" navbar right collapsible>
+                <Nav ulClassName="hidden-xs navbar-quicklink" navbar right collapsible>
                     <NavItem eventKey={1} href="https://github.com/tommyZZM/webGLPratice" title="watch source on github">
-                        <span className="fa fa-github-alt"></span>
+                        <span className="fa fa-github-alt"/>
                     </NavItem>
                     <NavItem eventKey={2} href={config.url} title="blog">
-                        <span className="fa fa-home"></span>
+                        <span className="fa fa-home"/>
                     </NavItem>
                 </Nav>
             </Navbar>

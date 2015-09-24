@@ -6,14 +6,21 @@ body, body>.container, html {
 
 body{
   margin: 8px;
+  .noborder-xs;
+}
+#app.container{
+  .noborder-xs;
+  overflow: hidden;
 }
 
 a {
   color: @brand-primary;
-  text-decoration: none;
+  &{
+    text-decoration: none !important;
+  }
 
-  &:hover,
-  &:focus {
+  &:hover
+  /*&:focus*/ {
     color: @brand-primary-hover;
     text-decoration: none;
     -webkit-transition-duration:0.3s;
@@ -23,21 +30,10 @@ a {
   }
 }
 
+
+
 .pull-center {
   float: none!important;
   margin-left: auto;
   margin-right: auto!important;
-}
-
-.like-paper{
-  overflow: hidden;
-  background: #ffffff;
-  padding: 0;
-
-  border: 1px solid @color-black05;
-  .box-shadow(0 1px 6px 0 darken(@color-paper,10%));
-
-  //@media (max-width: @screen-sm-min) {
-  //  border: none;
-  //}
 }

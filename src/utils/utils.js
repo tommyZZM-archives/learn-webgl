@@ -29,6 +29,11 @@ export var constants = {
 
 export var config = {
     url:"http://www.chalet581.xyz",
+    catalog:{
+        Math:"Math",
+        WebGL:"WebGL",
+        WebCL:"WebCL"
+    },
     get minHeight(){
         return window.innerHeight-16;
     }

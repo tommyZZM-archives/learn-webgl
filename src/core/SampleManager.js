@@ -6,7 +6,7 @@ import {EventDispatcher} from 'alsc';
 import * as agent from "superagent";
 import * as async from "async";
 
-import {url,fn} from "../utils/utils.js";
+import {url} from "../utils/utils.js";
 import SampleField from "./../view/content/SampleField.js";
 import AnimationManager from "./AnimationManager.js";
 import BrowseRouteManager from './BrowseRouteManager.js';
@@ -31,6 +31,7 @@ class SampleManager extends EventDispatcher{
         super();
         this.samplesData = {};
         this.samplesDict = {};//例子代码文件
+        this.samplesDictCatalog = {};
         this.currSampleScript = null;
         this.currSampleID = null;
         agent.get("dist/post_data.json").then((res)=>{
@@ -148,6 +149,23 @@ class SampleManager extends EventDispatcher{
             sample.runingScript.launch(data.canvas,data);
             this.currSampleScript = sample.runingScript;
         }
+    }
+
+    /***/
+    getSampleListByCatalog(catalog){
+        var _catalogUpCase = catalog.toUpperCase();
+        if(!this.samplesData.posts){
+            return [];
+        }
+        if(this.samplesDictCatalog[_catalogUpCase])
+            return this.samplesDictCatalog[_catalogUpCase];
+        var list = this.samplesData.posts.filter((sample)=>{return sample.catalog.toUpperCase()===_catalogUpCase});
+        if(list.length>0){
+            this.samplesDictCatalog[_catalogUpCase] = list;
+        }else{
+            return [];
+        }
+        return list;//this.getSampleListByCatalog(catalog);
     }
 }
 

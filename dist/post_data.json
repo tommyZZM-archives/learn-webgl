@@ -5,25 +5,29 @@
             "title": "Shader",
             "path": "2015\\08-26-Shader",
             "tags": "",
-            "date": "2015-08-26"
+            "date": "2015-08-26",
+            "catalog":"WebGL"
         },
         {
             "title": "Buffer Shape",
             "path": "2015\\08-27-Buffer-Shape",
             "tags": "",
-            "date": "2015-08-27"
+            "date": "2015-08-27",
+            "catalog":"WebGL"
         },
         {
             "title": "Triangular Algebra",
             "path": "2015\\09-03-Triangular-Algebra",
             "tags": "",
-            "date": "2015-09-03"
+            "date": "2015-09-03",
+            "catalog":"Math"
         },
         {
             "title": "Linear Algebra",
             "path": "2015\\09-09-LinearAlgebra",
             "tags": "",
-            "date": "2015-09-09"
+            "date": "2015-09-09",
+            "catalog":"Math"
         }
     ]
 }

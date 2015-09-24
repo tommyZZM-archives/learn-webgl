@@ -27,6 +27,7 @@ class App extends React.Component {
 
     get initializeState(){
         return {
+            isReady:false,
             style:{
                 minHeight:config.minHeight //document margin
             },
@@ -47,6 +48,7 @@ class App extends React.Component {
 
     onSampleConfigReady(){
         this.setState({
+            isReady:true,
             samplesData:SampleManager.samplesData
         });
     }
